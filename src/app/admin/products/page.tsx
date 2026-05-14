@@ -33,7 +33,8 @@ export default function AdminProductsPage() {
 
   const formatNumber = (num: number) => {
     if (!mounted) return num.toString();
-    return num.toLocaleString();
+    // Use a fixed locale to avoid hydration issues across environments
+    return num.toLocaleString('en-US');
   };
 
   const handleSaveProduct = async (e: React.FormEvent<HTMLFormElement>) => {
