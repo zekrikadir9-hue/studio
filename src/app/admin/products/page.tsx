@@ -1,6 +1,6 @@
 
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useCollection, useFirestore } from '@/firebase';
 import { collection, addDoc, deleteDoc, doc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
@@ -25,6 +25,16 @@ export default function AdminProductsPage() {
   
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<any>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const formatNumber = (num: number) => {
+    if (!mounted) return num.toString();
+    return num.toLocaleString();
+  };
 
   const handleSaveProduct = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -197,11 +207,11 @@ export default function AdminProductsPage() {
                   <div className="font-bold text-primary">
                     {product.discountPrice ? (
                       <>
-                        <span className="text-secondary">{product.discountPrice.toLocaleString()} DA</span>
-                        <span className="text-xs line-through text-muted-foreground mr-2">{product.price.toLocaleString()}</span>
+                        <span className="text-secondary">{formatNumber(product.discountPrice)} DA</span>
+                        <span className="text-xs line-through text-muted-foreground mr-2">{formatNumber(product.price)}</span>
                       </>
                     ) : (
-                      <span>{product.price.toLocaleString()} DA</span>
+                      <span>{formatNumber(product.price)} DA</span>
                     )}
                   </div>
                 </TableCell>

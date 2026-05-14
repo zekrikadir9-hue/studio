@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Heart, ShoppingCart, Star, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
 
 interface ProductCardProps {
   id: string;
@@ -18,7 +18,17 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ id, name, price, oldPrice, image, category, isNew, rating = 5 }: ProductCardProps) {
+  const [mounted, setMounted] = useState(false);
   const discount = oldPrice ? Math.round(((oldPrice - price) / oldPrice) * 100) : 0;
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const formatNumber = (num: number) => {
+    if (!mounted) return num.toString();
+    return num.toLocaleString();
+  };
 
   return (
     <div className="group relative bg-white rounded-2xl md:rounded-[2.5rem] overflow-hidden border border-stone-100 hover:shadow-xl transition-all duration-700 md:hover:-translate-y-2">
@@ -74,11 +84,11 @@ export function ProductCard({ id, name, price, oldPrice, image, category, isNew,
         <div className="flex items-center justify-end gap-2 md:gap-3">
           {oldPrice && (
             <span className="text-[10px] md:text-sm line-through text-stone-400 font-medium">
-               {oldPrice.toLocaleString()}
+               {formatNumber(oldPrice)}
             </span>
           )}
           <span className="text-base md:text-2xl font-black text-secondary">
-            {price.toLocaleString()} DA
+            {formatNumber(price)} DA
           </span>
         </div>
 
