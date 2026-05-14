@@ -1,11 +1,10 @@
-
 import { Navbar } from '@/components/layout/Navbar';
 import { ProductCard } from '@/components/shop/ProductCard';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { CONTACT_LINKS, CATEGORIES } from '@/lib/constants';
+import { CATEGORIES } from '@/lib/constants';
 import { AmazighZay } from '@/components/icons/AmazighZay';
-import { Sparkles, ShieldCheck, Globe, ArrowLeft, MessageCircle, Truck, Star, BadgeCheck, Zap, TrendingUp, Award, Clock } from 'lucide-react';
+import { Sparkles, ShieldCheck, ArrowLeft, MessageCircle, Truck, TrendingUp, Award, Clock, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 export default function HomePage() {
@@ -23,6 +22,7 @@ export default function HomePage() {
       <Navbar />
       
       <main className="flex-grow">
+        {/* Hero Section */}
         <section className="relative min-h-[85vh] md:min-h-[95vh] flex items-center overflow-hidden bg-[#061a15]">
           <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-primary/95 via-primary/30 to-transparent z-10" />
@@ -73,6 +73,7 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Confidence Bar */}
         <div className="bg-white py-10 md:py-20 border-b border-stone-100 relative overflow-hidden">
            <div className="container mx-auto px-4">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-16">
@@ -96,6 +97,7 @@ export default function HomePage() {
            </div>
         </div>
 
+        {/* Featured Products */}
         <section className="py-16 md:py-32 bg-stone-50 amazigh-pattern-bg">
           <div className="container mx-auto px-4">
             <div className="flex flex-col justify-between items-center md:items-end mb-12 md:mb-24 gap-6 md:gap-10 text-center md:text-right">
@@ -121,6 +123,7 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Categories Worlds */}
         <section className="py-24 md:py-48 bg-white overflow-hidden relative">
           <div className="absolute top-0 right-0 w-[20rem] md:w-[40rem] h-[20rem] md:h-[40rem] bg-secondary/5 rounded-full blur-[100px] md:blur-[150px]" />
           <div className="absolute bottom-0 left-0 w-[20rem] md:w-[40rem] h-[20rem] md:h-[40rem] bg-primary/5 rounded-full blur-[100px] md:blur-[150px]" />
@@ -146,6 +149,7 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Newsletter Section */}
         <section className="container mx-auto px-4 py-16 md:py-48">
            <div className="premium-gradient rounded-[3rem] md:rounded-[6rem] p-8 md:p-36 relative overflow-hidden group shadow-2xl">
               <div className="absolute inset-0 opacity-10 pointer-events-none amazigh-pattern-bg" />
