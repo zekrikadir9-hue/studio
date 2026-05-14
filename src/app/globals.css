@@ -1,30 +1,29 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 35 30% 98%; /* Warm Antique Cream */
+    --background: 40 33% 98%; /* خلفية كريمية فاخرة */
     --foreground: 154 50% 10%;
     --card: 0 0% 100%;
     --card-foreground: 154 50% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 154 50% 10%;
-    --primary: 154 100% 15%; /* Deep Royal Forest Green */
+    --primary: 154 100% 12%; /* أخضر زمردي ملكي أغمق */
     --primary-foreground: 40 40% 98%;
-    --secondary: 42 70% 50%; /* Rich Burnished Gold */
+    --secondary: 42 75% 45%; /* ذهبي معتق جذاب */
     --secondary-foreground: 154 100% 5%;
-    --muted: 40 10% 92%;
-    --muted-foreground: 154 10% 35%;
-    --accent: 42 70% 50%;
+    --muted: 40 10% 94%;
+    --muted-foreground: 154 10% 40%;
+    --accent: 42 75% 45%;
     --accent-foreground: 40 40% 98%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 40 10% 85%;
-    --input: 40 10% 85%;
-    --ring: 154 100% 15%;
-    --radius: 1rem;
+    --border: 40 10% 88%;
+    --input: 40 10% 88%;
+    --ring: 154 100% 12%;
+    --radius: 1.25rem;
   }
 }
 
@@ -45,7 +44,7 @@
 .animate-marquee {
   display: inline-block;
   white-space: nowrap;
-  animation: marquee 20s linear infinite;
+  animation: marquee 25s linear infinite;
 }
 
 .font-headline {
@@ -53,9 +52,15 @@
 }
 
 .glass-card {
-  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+  @apply bg-white/80 backdrop-blur-xl border border-white/30 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
 }
 
 .btn-hover-effect {
-  @apply transition-all duration-300 hover:scale-105 active:scale-95;
+  @apply transition-all duration-500 hover:scale-[1.02] active:scale-95 hover:shadow-lg hover:shadow-primary/10;
+}
+
+.amazigh-pattern {
+  background-image: radial-gradient(var(--secondary) 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+  opacity: 0.05;
 }

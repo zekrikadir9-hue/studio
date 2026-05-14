@@ -1,7 +1,6 @@
-
 "use client"
 import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { LayoutDashboard, ShoppingCart, Package, Users, Settings, LogOut, Lock } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, Users, Settings, LogOut, Lock, LayoutGrid } from 'lucide-react';
 import Link from 'next/link';
 import { useUser, useAuth } from '@/firebase';
 import { useState } from 'react';
@@ -80,6 +79,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                   <SidebarMenuButton className="h-12 hover:bg-stone-100 rounded-xl">
                     <Package className="w-5 h-5 text-primary" />
                     <span className="font-medium">Products</span>
+                  </SidebarMenuButton>
+                </Link>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <Link href="/admin/categories">
+                  <SidebarMenuButton className="h-12 hover:bg-stone-100 rounded-xl">
+                    <LayoutGrid className="w-5 h-5 text-primary" />
+                    <span className="font-medium">Categories</span>
                   </SidebarMenuButton>
                 </Link>
               </SidebarMenuItem>
