@@ -13,7 +13,7 @@ export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
-    const savedLang = localStorage.getItem('lang') as Language;
+    const savedLang = typeof window !== 'undefined' ? localStorage.getItem('lang') as Language : 'ar';
     if (savedLang) setLang(savedLang);
 
     const handleScroll = () => {
@@ -30,8 +30,10 @@ export function Navbar() {
   const toggleLang = () => {
     const newLang = lang === 'ar' ? 'fr' : 'ar';
     setLang(newLang);
-    localStorage.setItem('lang', newLang);
-    window.location.reload(); 
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('lang', newLang);
+      window.location.reload(); 
+    }
   };
 
   const t = translations[lang];
