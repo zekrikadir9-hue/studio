@@ -1,30 +1,46 @@
+
 "use client"
 import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { LayoutDashboard, ShoppingCart, Package, Users, Settings, LogOut, Lock, LayoutGrid } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, Users, Settings, LogOut, Lock, LayoutGrid, UserPlus } from 'lucide-react';
 import Link from 'next/link';
 import { useUser, useAuth } from '@/firebase';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
+import { useToast } from '@/hooks/use-toast';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const { user, loading } = useUser();
   const auth = useAuth();
+  const { toast } = useToast();
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isRegistering, setIsRegistering] = useState(false);
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!auth) return;
+    
     try {
-      await signInWithEmailAndPassword(auth, email, password);
-    } catch (e) {
-      alert("Invalid credentials");
+      if (isRegistering) {
+        await createUserWithEmailAndPassword(auth, email, password);
+        toast({ title: "Admin Created", description: "Your admin account has been created successfully." });
+      } else {
+        await signInWithEmailAndPassword(auth, email, password);
+        toast({ title: "Welcome back", description: "Successfully authorized." });
+      }
+    } catch (e: any) {
+      toast({ 
+        title: "Auth Error", 
+        description: e.message || "Invalid credentials or connection error.",
+        variant: "destructive" 
+      });
     }
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center font-headline text-3xl animate-pulse">THILELI...</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center font-headline text-3xl animate-pulse text-primary">THILELI...</div>;
 
   if (!user) {
     return (
@@ -34,13 +50,46 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Lock className="w-8 h-8 text-primary" />
             </div>
-            <h1 className="text-3xl font-headline font-bold text-primary">Admin Access</h1>
+            <h1 className="text-3xl font-headline font-bold text-primary">
+              {isRegistering ? 'Setup Admin' : 'Admin Access'}
+            </h1>
             <p className="text-muted-foreground text-sm">Protected by THILELI Security</p>
           </div>
-          <form onSubmit={handleLogin} className="space-y-4">
-            <Input type="email" placeholder="Admin Email" value={email} onChange={(e) => setEmail(e.target.value)} className="h-12 rounded-xl" required />
-            <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="h-12 rounded-xl" required />
-            <Button type="submit" className="w-full h-12 font-bold rounded-xl btn-hover-effect">Authorize Access</Button>
+          
+          <form onSubmit={handleAuth} className="space-y-4">
+            <div className="space-y-2">
+              <Input 
+                type="email" 
+                placeholder="Admin Email" 
+                value={email} 
+                onChange={(e) => setEmail(e.target.value)} 
+                className="h-12 rounded-xl" 
+                required 
+              />
+            </div>
+            <div className="space-y-2">
+              <Input 
+                type="password" 
+                placeholder="Password" 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                className="h-12 rounded-xl" 
+                required 
+              />
+            </div>
+            
+            <Button type="submit" className="w-full h-12 font-bold rounded-xl btn-hover-effect">
+              {isRegistering ? 'Create Account' : 'Authorize Access'}
+            </Button>
+            
+            <Button 
+              type="button" 
+              variant="ghost" 
+              className="w-full text-xs text-muted-foreground hover:bg-transparent"
+              onClick={() => setIsRegistering(!isRegistering)}
+            >
+              {isRegistering ? 'Already have an account? Login' : 'First time? Create Admin Account'}
+            </Button>
           </form>
         </div>
       </div>
@@ -49,7 +98,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen bg-stone-50 w-full">
+      <div className="flex min-h-screen bg-stone-50 w-full" dir="ltr">
         <Sidebar className="border-r border-stone-200 bg-white">
           <SidebarHeader className="p-6">
             <Link href="/" className="flex items-center gap-2 mb-8">
