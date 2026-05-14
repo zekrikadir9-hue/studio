@@ -27,7 +27,8 @@
         "id": { "type": "string" },
         "name_ar": { "type": "string" },
         "name_fr": { "type": "string" },
-        "icon": { "type": "string" }
+        "icon": { "type": "string" },
+        "imageUrl": { "type": "string" }
       },
       "required": ["id", "name_ar", "name_fr"]
     }

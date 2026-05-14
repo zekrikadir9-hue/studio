@@ -35,6 +35,42 @@
       "description": "Natural Aker Fassi Beauty",
       "imageUrl": "https://picsum.photos/seed/makeup1/800/1000",
       "imageHint": "traditional makeup"
+    },
+    {
+      "id": "cat-jewelry",
+      "description": "Jewelry Category Image",
+      "imageUrl": "https://picsum.photos/seed/catjewel/600/800",
+      "imageHint": "traditional jewelry"
+    },
+    {
+      "id": "cat-headwear",
+      "description": "Headwear Category Image",
+      "imageUrl": "https://picsum.photos/seed/cathead/600/800",
+      "imageHint": "traditional hat"
+    },
+    {
+      "id": "cat-eyewear",
+      "description": "Eyewear Category Image",
+      "imageUrl": "https://picsum.photos/seed/cateye/600/800",
+      "imageHint": "stylish glasses"
+    },
+    {
+      "id": "cat-makeup",
+      "description": "Makeup Category Image",
+      "imageUrl": "https://picsum.photos/seed/catmake/600/800",
+      "imageHint": "organic makeup"
+    },
+    {
+      "id": "cat-skincare",
+      "description": "Skincare Category Image",
+      "imageUrl": "https://picsum.photos/seed/catskin/600/800",
+      "imageHint": "natural oils"
+    },
+    {
+      "id": "cat-fragrance",
+      "description": "Fragrance Category Image",
+      "imageUrl": "https://picsum.photos/seed/catscent/600/800",
+      "imageHint": "luxury incense"
     }
   ]
 }

@@ -1,3 +1,4 @@
+
 "use client"
 import React, { useState } from 'react';
 import { useCollection, useFirestore } from '@/firebase';
@@ -7,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
-import { Plus, Pencil, Trash2, LayoutGrid } from 'lucide-react';
+import { Plus, Pencil, Trash2, LayoutGrid, ImageIcon } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 export default function AdminCategoriesPage() {
@@ -28,6 +29,7 @@ export default function AdminCategoriesPage() {
       name_ar: formData.get('name_ar'),
       name_fr: formData.get('name_fr'),
       icon: formData.get('icon') || 'LayoutGrid',
+      imageUrl: formData.get('imageUrl') || 'https://picsum.photos/seed/cat/600/800',
       updatedAt: serverTimestamp(),
     };
 
@@ -63,7 +65,7 @@ export default function AdminCategoriesPage() {
           <h1 className="text-3xl font-headline font-bold text-primary flex items-center gap-3">
             <LayoutGrid className="w-8 h-8" /> Manage Categories
           </h1>
-          <p className="text-muted-foreground">Organize your store sections.</p>
+          <p className="text-muted-foreground">Organize your store sections with beautiful visuals.</p>
         </div>
         
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
@@ -72,7 +74,7 @@ export default function AdminCategoriesPage() {
               <Plus className="w-5 h-5 ml-2" /> Add Category
             </Button>
           </DialogTrigger>
-          <DialogContent className="bg-white rounded-3xl">
+          <DialogContent className="bg-white rounded-3xl max-w-md">
             <DialogHeader>
               <DialogTitle className="text-2xl font-headline">{editingCategory ? 'Edit Category' : 'New Category'}</DialogTitle>
             </DialogHeader>
@@ -84,6 +86,10 @@ export default function AdminCategoriesPage() {
               <div className="space-y-2">
                 <Label>Name (French)</Label>
                 <Input name="name_fr" defaultValue={editingCategory?.name_fr} required className="rounded-xl" />
+              </div>
+              <div className="space-y-2">
+                <Label>Image URL (Attractive Visual)</Label>
+                <Input name="imageUrl" defaultValue={editingCategory?.imageUrl} placeholder="https://..." className="rounded-xl" />
               </div>
               <div className="space-y-2">
                 <Label>Icon Name (Lucide)</Label>
@@ -101,7 +107,7 @@ export default function AdminCategoriesPage() {
         <Table>
           <TableHeader className="bg-stone-50">
             <TableRow>
-              <TableHead>Icon</TableHead>
+              <TableHead>Preview</TableHead>
               <TableHead>Arabic Name</TableHead>
               <TableHead>French Name</TableHead>
               <TableHead className="text-right">Actions</TableHead>
@@ -112,7 +118,11 @@ export default function AdminCategoriesPage() {
               <TableRow><TableCell colSpan={4} className="text-center py-10">Loading...</TableCell></TableRow>
             ) : categories?.map((cat: any) => (
               <TableRow key={cat.id}>
-                <TableCell><LayoutGrid className="w-5 h-5 text-secondary" /></TableCell>
+                <TableCell>
+                  <div className="w-16 h-12 rounded-lg overflow-hidden relative">
+                    <img src={cat.imageUrl} alt="" className="w-full h-full object-cover" />
+                  </div>
+                </TableCell>
                 <TableCell className="font-bold">{cat.name_ar}</TableCell>
                 <TableCell>{cat.name_fr}</TableCell>
                 <TableCell className="text-right">
