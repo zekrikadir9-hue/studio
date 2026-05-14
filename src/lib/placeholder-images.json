@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "rug-1",
+      "description": "Traditional Berber Rug",
+      "imageUrl": "https://picsum.photos/seed/rug1/800/1000",
+      "imageHint": "Berber rug"
+    },
+    {
+      "id": "jewelry-1",
+      "description": "Kabyle Silver Jewelry",
+      "imageUrl": "https://picsum.photos/seed/jewelry1/800/1000",
+      "imageHint": "Kabyle jewelry"
+    },
+    {
+      "id": "pottery-1",
+      "description": "Ancient Amazigh Pottery",
+      "imageUrl": "https://picsum.photos/seed/pottery1/800/1000",
+      "imageHint": "Amazigh pottery"
+    },
+    {
+      "id": "burnous-1",
+      "description": "Traditional Woolen Burnous",
+      "imageUrl": "https://picsum.photos/seed/burnous1/800/1000",
+      "imageHint": "Algerian burnous"
+    },
+    {
+      "id": "decor-1",
+      "description": "Handcrafted Wooden Decor",
+      "imageUrl": "https://picsum.photos/seed/decor1/800/1000",
+      "imageHint": "wooden craft"
+    },
+    {
+      "id": "jewelry-2",
+      "description": "Traditional Enameled Bracelet",
+      "imageUrl": "https://picsum.photos/seed/jewelry2/800/1000",
+      "imageHint": "berber bracelet"
+    }
+  ]
 }
