@@ -1,4 +1,3 @@
-
 import { Navbar } from '@/components/layout/Navbar';
 import { ProductCard } from '@/components/shop/ProductCard';
 import { Button } from '@/components/ui/button';
@@ -23,7 +22,6 @@ export default function HomePage() {
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section - Cinematic & International Style */}
         <section className="relative min-h-[85vh] md:min-h-[95vh] flex items-center overflow-hidden bg-[#061a15]">
           <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-primary/95 via-primary/30 to-transparent z-10" />
@@ -74,7 +72,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Global Trust Bar - Mobile Optimized */}
         <div className="bg-white py-10 md:py-20 border-b border-stone-100 relative overflow-hidden">
            <div className="container mx-auto px-4">
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-16">
@@ -98,7 +95,6 @@ export default function HomePage() {
            </div>
         </div>
 
-        {/* Featured Products - High Density Global Style */}
         <section className="py-16 md:py-32 bg-stone-50 amazigh-pattern-bg">
           <div className="container mx-auto px-4">
             <div className="flex flex-col justify-between items-center md:items-end mb-12 md:mb-24 gap-6 md:gap-10 text-center md:text-right">
@@ -124,7 +120,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Global Category Universe */}
         <section className="py-24 md:py-48 bg-white overflow-hidden relative">
           <div className="absolute top-0 right-0 w-[20rem] md:w-[40rem] h-[20rem] md:h-[40rem] bg-secondary/5 rounded-full blur-[100px] md:blur-[150px]" />
           <div className="absolute bottom-0 left-0 w-[20rem] md:w-[40rem] h-[20rem] md:h-[40rem] bg-primary/5 rounded-full blur-[100px] md:blur-[150px]" />
@@ -150,7 +145,6 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Premium VIP Invitation */}
         <section className="container mx-auto px-4 py-16 md:py-48">
            <div className="premium-gradient rounded-[3rem] md:rounded-[6rem] p-8 md:p-36 relative overflow-hidden group shadow-2xl">
               <div className="absolute inset-0 opacity-10 pointer-events-none amazigh-pattern-bg" />
@@ -177,7 +171,6 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* Footer - Global Marketplace Style */}
       <footer className="bg-stone-950 text-white pt-24 md:pt-48 pb-10 md:pb-20 border-t-[8px] md:border-t-[15px] border-secondary">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-32 mb-20 md:mb-40 text-center md:text-right">

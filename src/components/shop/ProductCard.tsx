@@ -1,4 +1,3 @@
-
 "use client"
 import Image from 'next/image';
 import { Heart, ShoppingCart, Star, Zap } from 'lucide-react';
@@ -60,7 +59,6 @@ export function ProductCard({ id, name, price, oldPrice, image, category, isNew,
            </Button>
         </div>
 
-        {/* Mobile quick add button - AliExpress Style */}
         <button className="md:hidden absolute bottom-2 right-2 p-2 bg-primary/90 text-white rounded-lg shadow-lg z-20 active:scale-90 transition-transform">
            <ShoppingCart className="w-4 h-4" />
         </button>
