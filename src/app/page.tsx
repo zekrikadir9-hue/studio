@@ -1,10 +1,10 @@
-
 import { Navbar } from '@/components/layout/Navbar';
 import { ProductCard } from '@/components/shop/ProductCard';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { CONTACT_LINKS, CATEGORIES } from '@/lib/constants';
-import { Phone, Send, MessageCircle, Instagram, Facebook, Sparkles, ShieldCheck, Globe, ArrowLeft } from 'lucide-react';
+import { AmazighZay } from '@/components/icons/AmazighZay';
+import { Sparkles, ShieldCheck, Globe, ArrowLeft, MessageCircle, Instagram, Facebook, Phone } from 'lucide-react';
 import Link from 'next/link';
 
 export default function HomePage() {
@@ -23,67 +23,67 @@ export default function HomePage() {
       
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative h-[85vh] flex items-center overflow-hidden">
+        <section className="relative h-[90vh] flex items-center overflow-hidden">
           <div className="absolute inset-0 z-0">
-             <div className="absolute inset-0 bg-gradient-to-l from-primary/90 via-primary/40 to-transparent z-10" />
+             <div className="absolute inset-0 bg-gradient-to-l from-primary/95 via-primary/50 to-transparent z-10" />
              <img 
                src="https://picsum.photos/seed/amazigh-hero/1920/1080" 
                alt="Hero Background" 
-               className="w-full h-full object-cover"
+               className="w-full h-full object-cover scale-105"
                data-ai-hint="amazigh lifestyle"
              />
           </div>
           
           <div className="container mx-auto px-4 relative z-20">
-            <div className="max-w-3xl text-white text-right">
-              <div className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-md px-4 py-2 rounded-full border border-secondary/30 mb-6 animate-in fade-in slide-in-from-top-4 duration-700">
-                <Sparkles className="w-4 h-4 text-secondary" />
-                <span className="text-sm font-bold tracking-wider uppercase">Tagezda n Tussna</span>
+            <div className="max-w-4xl text-white text-right space-y-8">
+              <div className="inline-flex items-center gap-3 bg-secondary/30 backdrop-blur-xl px-6 py-3 rounded-full border border-secondary/40 animate-in fade-in slide-in-from-top-4 duration-700">
+                <Sparkles className="w-5 h-5 text-secondary animate-pulse" />
+                <span className="text-sm font-bold tracking-widest uppercase">Tagezda n Tussna n Thileli</span>
               </div>
-              <h1 className="font-headline text-6xl md:text-9xl font-bold mb-8 animate-in fade-in slide-in-from-bottom-8 duration-1000 leading-tight">
-                تراث ثيليلي <br/> <span className="text-secondary italic">المعاصر</span>
+              <h1 className="font-headline text-7xl md:text-[10rem] font-bold leading-[0.9] animate-in fade-in slide-in-from-bottom-8 duration-1000">
+                تراث ثيليلي <br/> <span className="text-secondary italic">المتجدد</span>
               </h1>
-              <p className="text-xl md:text-3xl font-light mb-12 opacity-95 leading-relaxed max-w-2xl ml-auto">
-                اكتشف جمال الحرف الأمازيغية الجزائرية بلمسة فنية عصرية. مختاراتنا تجمع بين روح الجبال وأناقة المدينة.
+              <p className="text-xl md:text-3xl font-light opacity-90 leading-relaxed max-w-2xl ml-auto border-r-2 border-secondary pr-6">
+                أرقى ما أبدعته الأنامل الجزائرية الأمازيغية، قطع فريدة تجمع بين أصالة الجبال وسحر الحداثة.
               </p>
-              <div className="flex flex-wrap gap-6 justify-start">
-                <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white px-10 h-16 text-xl rounded-full shadow-2xl shadow-secondary/20 btn-hover-effect">
-                  تسوق الآن
+              <div className="flex flex-wrap gap-6 justify-start pt-4">
+                <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white px-12 h-18 text-2xl rounded-full shadow-2xl shadow-secondary/30 btn-hover-effect border-none">
+                  ابدأ الاستكشاف
                 </Button>
-                <Button size="lg" variant="outline" className="text-white border-white/40 hover:bg-white hover:text-primary px-10 h-16 text-xl rounded-full backdrop-blur-sm">
-                  قصتنا
+                <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10 px-12 h-18 text-2xl rounded-full backdrop-blur-md">
+                  رؤيتنا
                 </Button>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Categories Grid - Visual Transformation */}
-        <section className="py-24 bg-stone-50 overflow-hidden">
+        {/* Categories Grid */}
+        <section className="py-32 bg-stone-50 amazigh-pattern-bg">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-16 space-y-4">
-               <h2 className="font-headline text-4xl md:text-5xl font-bold text-primary">تصفح العوالم</h2>
-               <div className="w-24 h-1 bg-secondary mx-auto rounded-full" />
-               <p className="text-muted-foreground max-w-lg mx-auto">اختر الفئة التي تعبر عن هويتك وأصالتك.</p>
+            <div className="text-center mb-24 space-y-6">
+               <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary">عوالم ثيليلي</h2>
+               <div className="w-32 h-1.5 bg-secondary mx-auto rounded-full" />
+               <p className="text-muted-foreground text-xl max-w-2xl mx-auto">مجموعات مختارة بعناية تعكس عمق الهوية الجزائرية.</p>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
               {CATEGORIES.map((cat) => (
-                <Link key={cat.id} href={`/shop?category=${cat.id}`} className="relative h-[400px] rounded-[2.5rem] overflow-hidden group shadow-xl">
-                   <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-700 z-10" />
+                <Link key={cat.id} href={`/shop?category=${cat.id}`} className="relative h-[450px] rounded-[3.5rem] overflow-hidden group shadow-2xl transition-all duration-700 hover:-translate-y-4">
+                   <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-700 z-10" />
                    <img 
                       src={cat.imageUrl} 
                       alt={cat.name} 
                       className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                       data-ai-hint={cat.id}
                    />
-                   <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end items-center text-center">
-                      <div className="bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-3xl w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                         <span className="text-white/60 text-xs uppercase tracking-[0.3em] mb-2 block">Discovery</span>
-                         <h3 className="text-white text-2xl font-headline font-bold mb-4">{cat.name}</h3>
-                         <div className="overflow-hidden h-0 group-hover:h-12 transition-all duration-500">
-                            <Button variant="secondary" size="sm" className="rounded-full font-bold">
-                              استكشف الآن <ArrowLeft className="w-4 h-4 mr-2" />
+                   <div className="absolute inset-0 z-20 p-10 flex flex-col justify-end items-center text-center">
+                      <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-8 rounded-[2.5rem] w-full translate-y-6 group-hover:translate-y-0 transition-transform duration-500 shadow-2xl">
+                         <span className="text-white/70 text-[10px] font-black uppercase tracking-[0.4em] mb-3 block">Premium Selection</span>
+                         <h3 className="text-white text-3xl font-headline font-bold mb-6">{cat.name}</h3>
+                         <div className="overflow-hidden h-0 group-hover:h-14 transition-all duration-500">
+                            <Button variant="secondary" className="rounded-full font-bold px-8 h-12 hover:scale-105 transition-transform">
+                              عرض المجموعة <ArrowLeft className="w-4 h-4 mr-2" />
                             </Button>
                          </div>
                       </div>
@@ -94,116 +94,96 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Featured Products */}
-        <section className="py-24 bg-background text-right">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8 border-r-4 border-secondary pr-8">
-              <div className="max-w-xl">
-                <h2 className="font-headline text-5xl md:text-6xl font-bold text-primary mb-4">أرقى المختارات</h2>
-                <p className="text-muted-foreground text-xl">مزيج بين الحداثة والأصالة في كل قطعة نختارها لك بعناية فائقة.</p>
-              </div>
-              <Button variant="ghost" className="text-secondary font-bold text-xl group hover:bg-secondary/10 px-8 py-4 rounded-full">
-                جميع المنتجات <ArrowLeft className="inline-block transition-transform group-hover:-translate-x-2 mr-3" />
-              </Button>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
-              {featuredProducts.map((product) => (
-                <ProductCard key={product.id} {...product} />
-              ))}
-            </div>
+        {/* Brand Values */}
+        <section className="py-32 bg-primary text-white relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+             <AmazighZay className="w-[500px] h-[500px] absolute -top-20 -left-20 rotate-12" />
           </div>
-        </section>
-
-        {/* Brand Values - Enhanced */}
-        <section className="py-24 bg-primary text-white relative">
-          <div className="absolute inset-0 amazigh-pattern opacity-10" />
-          <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
-            <div className="space-y-6 group">
-              <div className="w-20 h-20 bg-secondary rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:rotate-12 transition-transform">
-                <Globe className="w-10 h-10" />
+          <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 md:grid-cols-3 gap-20 text-center">
+            <div className="space-y-8 group">
+              <div className="w-24 h-24 bg-secondary/20 backdrop-blur-xl border border-secondary/30 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl group-hover:rotate-12 transition-transform duration-500">
+                <Globe className="w-12 h-12 text-secondary" />
               </div>
-              <h3 className="font-headline text-3xl font-bold">توصيل لـ 58 ولاية</h3>
-              <p className="text-white/70 text-lg leading-relaxed">شحن سريع وآمن إلى جميع ربوع الجزائر، بضغطة زر واحدة تصلك الأصالة أينما كنت.</p>
+              <h3 className="font-headline text-4xl font-bold">توصيل لـ 58 ولاية</h3>
+              <p className="text-white/60 text-xl leading-relaxed">شبكة توزيع احترافية تغطي كل شبر من الجزائر، بضمان وصول آمن وسريع.</p>
             </div>
-            <div className="space-y-6 group">
-              <div className="w-20 h-20 bg-secondary rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:rotate-12 transition-transform">
-                <Sparkles className="w-10 h-10" />
+            <div className="space-y-8 group">
+              <div className="w-24 h-24 bg-secondary/20 backdrop-blur-xl border border-secondary/30 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl group-hover:rotate-12 transition-transform duration-500">
+                <Sparkles className="w-12 h-12 text-secondary" />
               </div>
-              <h3 className="font-headline text-3xl font-bold">منتجات طبيعية 100%</h3>
-              <p className="text-white/70 text-lg leading-relaxed">مكياج وعناية بالبشرة مستوحاة من أسرار الجمال الجزائري القديم والزيوت الجبلية النقية.</p>
+              <h3 className="font-headline text-4xl font-bold">منتجات طبيعية</h3>
+              <p className="text-white/60 text-xl leading-relaxed">كنوز الطبيعة الجزائرية، من زيوت أطلس النادرة إلى أسرار الجمال التقليدي.</p>
             </div>
-            <div className="space-y-6 group">
-              <div className="w-20 h-20 bg-secondary rounded-[2rem] flex items-center justify-center mx-auto mb-8 shadow-2xl group-hover:rotate-12 transition-transform">
-                <ShieldCheck className="w-10 h-10" />
+            <div className="space-y-8 group">
+              <div className="w-24 h-24 bg-secondary/20 backdrop-blur-xl border border-secondary/30 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl group-hover:rotate-12 transition-transform duration-500">
+                <ShieldCheck className="w-12 h-12 text-secondary" />
               </div>
-              <h3 className="font-headline text-3xl font-bold">أصالة مضمونة</h3>
-              <p className="text-white/70 text-lg leading-relaxed">كل قطعة مجوهرات أو إكسسوار تحمل بصمة صانع جزائري فخور بوراثة الحرفة أباً عن جد.</p>
+              <h3 className="font-headline text-4xl font-bold">أصالة معتمدة</h3>
+              <p className="text-white/60 text-xl leading-relaxed">كل قطعة هي شهادة فخر صاغها حرفيون جزائريون يحافظون على إرث الأجداد.</p>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-stone-100 border-t border-stone-200 py-20 text-right">
+      <footer className="bg-stone-100 border-t border-stone-200 pt-32 pb-16 text-right">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-            <div className="md:col-span-2 space-y-8">
-              <div className="flex items-center gap-3">
-                 <div className="p-2 bg-primary rounded-xl">
-                   <span className="text-white font-bold text-3xl font-headline">T</span>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-20 mb-24">
+            <div className="md:col-span-2 space-y-10">
+              <div className="flex items-center gap-4">
+                 <div className="p-3 bg-primary rounded-[1.2rem] shadow-xl">
+                   <AmazighZay className="w-8 h-8 text-secondary" />
                  </div>
-                <span className="font-headline text-4xl font-bold text-primary tracking-tighter">THILELI</span>
+                <span className="font-headline text-5xl font-bold text-primary tracking-tighter">THILELI</span>
               </div>
-              <p className="text-muted-foreground text-lg max-w-md leading-relaxed">
-                نحتفي بالتراث الأمازيغي الجزائري وننقله للعالمية عبر منتجات عصرية تناسب أسلوب حياتكم اليومي بكل رقي.
+              <p className="text-muted-foreground text-xl max-w-lg leading-relaxed">
+                رسالتنا هي إحياء التراث الأمازيغي الجزائري وتقديمه للعالم بلمسة فنية عصرية تليق بمقامكم.
               </p>
-              <div className="flex gap-4 justify-start">
-                <Link href={CONTACT_LINKS.facebook} className="p-4 bg-white rounded-2xl text-primary hover:bg-secondary hover:text-white transition-all shadow-sm">
-                  <Facebook className="w-6 h-6" />
-                </Link>
-                <Link href={CONTACT_LINKS.instagram} className="p-4 bg-white rounded-2xl text-primary hover:bg-secondary hover:text-white transition-all shadow-sm">
-                  <Instagram className="w-6 h-6" />
-                </Link>
-                <Link href={CONTACT_LINKS.whatsapp} className="p-4 bg-white rounded-2xl text-primary hover:bg-secondary hover:text-white transition-all shadow-sm">
-                  <MessageCircle className="w-6 h-6" />
-                </Link>
+              <div className="flex gap-6 justify-start">
+                {[
+                  { icon: Facebook, link: CONTACT_LINKS.facebook },
+                  { icon: Instagram, link: CONTACT_LINKS.instagram },
+                  { icon: MessageCircle, link: CONTACT_LINKS.whatsapp },
+                ].map((social, i) => (
+                  <Link key={i} href={social.link} className="w-14 h-14 bg-white rounded-2xl text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-all shadow-lg hover:-translate-y-2">
+                    <social.icon className="w-7 h-7" />
+                  </Link>
+                ))}
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-primary text-xl mb-8">روابط سريعة</h4>
-              <ul className="space-y-4 text-muted-foreground">
+              <h4 className="font-bold text-primary text-2xl mb-10">روابط سريعة</h4>
+              <ul className="space-y-5 text-muted-foreground text-lg">
                 <li><Link href="/shop" className="hover:text-secondary transition-colors">جميع المنتجات</Link></li>
-                <li><Link href="/track" className="hover:text-secondary transition-colors">تتبع الطلب</Link></li>
-                <li><Link href="/wilayas" className="hover:text-secondary transition-colors">مناطق الشحن</Link></li>
-                <li><Link href="/returns" className="hover:text-secondary transition-colors">سياسة الإرجاع</Link></li>
+                <li><Link href="/heritage" className="hover:text-secondary transition-colors">قصة ثيليلي</Link></li>
+                <li><Link href="/track" className="hover:text-secondary transition-colors">تتبع الطلبية</Link></li>
+                <li><Link href="/contact" className="hover:text-secondary transition-colors">تواصل معنا</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-primary text-xl mb-8">دعم العملاء</h4>
-              <ul className="space-y-6 text-muted-foreground">
-                <li><Link href="tel:+213000000000" className="flex items-center gap-3 justify-end group"><span className="group-hover:text-secondary transition-colors font-bold">+213 00 00 00 00</span> <Phone className="w-5 h-5 text-secondary" /></Link></li>
-                <li><Link href="mailto:support@thileli.dz" className="hover:text-secondary transition-colors">support@thileli.dz</Link></li>
-                <li className="text-sm opacity-80">تيزي وزو، قلب منطقة القبائل، الجزائر</li>
+              <h4 className="font-bold text-primary text-2xl mb-10">تواصل مباشر</h4>
+              <ul className="space-y-8 text-muted-foreground text-lg">
+                <li><Link href="tel:+213000000000" className="flex items-center gap-4 justify-end group font-bold text-primary"><span className="group-hover:text-secondary transition-colors">+213 00 00 00 00</span> <Phone className="w-6 h-6 text-secondary" /></Link></li>
+                <li><Link href="mailto:hello@thileli.dz" className="hover:text-secondary transition-colors border-b border-stone-200 pb-2">hello@thileli.dz</Link></li>
+                <li className="text-sm opacity-70 leading-relaxed font-bold">تيزي وزو، الجزائر<br/>قلب منطقة القبائل النابض</li>
               </ul>
             </div>
           </div>
-          <div className="pt-10 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-            <p>© {new Date().getFullYear()} THILELI Heritage. جميع الحقوق محفوظة.</p>
-            <div className="flex gap-6">
-               <span className="hover:text-primary cursor-pointer">Privacy Policy</span>
-               <span className="hover:text-primary cursor-pointer">Terms of Service</span>
+          <div className="pt-12 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-stone-400 font-bold uppercase tracking-widest">
+            <p>© {new Date().getFullYear()} THILELI HERITAGE. ALL RIGHTS RESERVED.</p>
+            <div className="flex gap-10">
+               <span className="hover:text-primary cursor-pointer transition-colors">Privacy</span>
+               <span className="hover:text-primary cursor-pointer transition-colors">Terms</span>
             </div>
           </div>
         </div>
       </footer>
 
-      {/* Floating Support Button */}
       <Link 
         href={CONTACT_LINKS.whatsapp}
-        className="fixed bottom-10 left-10 z-50 p-5 bg-green-500 text-white rounded-[2rem] shadow-2xl hover:scale-110 transition-transform flex items-center gap-3 group"
+        className="fixed bottom-12 left-12 z-50 p-6 bg-green-500 text-white rounded-[2.5rem] shadow-2xl hover:scale-110 transition-all duration-500 flex items-center gap-4 group border-4 border-white"
       >
-        <MessageCircle className="w-7 h-7" />
-        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-bold">مركز المساعدة</span>
+        <MessageCircle className="w-8 h-8" />
+        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-bold text-lg">مساعدة فورية</span>
       </Link>
     </div>
   );

@@ -65,3 +65,22 @@
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+}
+
+[dir="rtl"] .animate-marquee {
+  animation: marquee-rtl 30s linear infinite;
+}
+
+@keyframes marquee-rtl {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}

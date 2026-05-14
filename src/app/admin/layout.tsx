@@ -45,14 +45,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       <div className="animate-float">
         <AmazighZay className="w-20 h-20 text-primary opacity-20" />
       </div>
-      <p className="mt-8 font-headline text-2xl text-primary animate-pulse tracking-widest">THILELI SECURITY</p>
+      <p className="mt-8 font-headline text-2xl text-primary animate-pulse tracking-widest uppercase">Thileli Security</p>
     </div>
   );
 
   if (!user) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-stone-100 amazigh-pattern-bg px-4">
-        <div className="max-w-md w-full glass-card p-12 rounded-[3rem] space-y-8 relative overflow-hidden">
+        <div className="max-w-md w-full glass-card p-12 rounded-[3.5rem] space-y-8 relative overflow-hidden border-none shadow-2xl">
           <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16" />
           
           <div className="text-center space-y-4 relative z-10">
@@ -69,7 +69,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             <div className="space-y-2">
               <Input 
                 type="email" 
-                placeholder="البريد الإلكتروني" 
+                placeholder="zekrikadir32@gmail.com" 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)} 
                 className="h-14 rounded-2xl border-stone-200 bg-white/50 focus:bg-white transition-all text-center" 
@@ -88,7 +88,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
             </div>
             
             <Button type="submit" className="w-full h-14 font-bold rounded-2xl premium-gradient text-white shadow-xl btn-hover-effect text-lg">
-              {isRegistering ? 'تفعيل الحساب' : 'دخول الآمن'}
+              {isRegistering ? 'تفعيل الحساب الجديد' : 'دخول الآمن'}
             </Button>
             
             <button 
@@ -96,7 +96,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               className="w-full text-xs text-stone-400 hover:text-primary transition-colors mt-4 font-bold uppercase tracking-tighter"
               onClick={() => setIsRegistering(!isRegistering)}
             >
-              {isRegistering ? 'لديك حساب بالفعل؟ سجل دخولك' : 'مستخدم جديد؟ اضغط هنا للإعداد الأول'}
+              {isRegistering ? 'لديك حساب؟ سجل دخولك' : 'First time? Create Admin Account'}
             </button>
           </form>
 
