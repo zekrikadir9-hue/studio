@@ -1,3 +1,4 @@
+
 "use client"
 import Link from 'next/link';
 import { ShoppingBag, User, Menu, Search, Languages, Zap, Heart, X } from 'lucide-react';
@@ -15,7 +16,13 @@ export function Navbar() {
     const savedLang = localStorage.getItem('lang') as Language;
     if (savedLang) setLang(savedLang);
 
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      if (window.scrollY > 20) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
