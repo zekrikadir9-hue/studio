@@ -1,9 +1,10 @@
+
 "use client"
 import { SidebarProvider, Sidebar, SidebarContent, SidebarHeader, SidebarMenu, SidebarMenuItem, SidebarMenuButton } from '@/components/ui/sidebar';
-import { LayoutDashboard, ShoppingCart, Package, Users, Settings, LogOut, Lock, LayoutGrid, ShieldCheck, Sparkles } from 'lucide-react';
+import { LayoutDashboard, ShoppingCart, Package, Users, Settings, LogOut, Lock, LayoutGrid, ShieldCheck, Sparkles, Loader2 } from 'lucide-react';
 import Link from 'next/link';
 import { useUser, useAuth } from '@/firebase';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
@@ -11,14 +12,33 @@ import { useToast } from '@/hooks/use-toast';
 import { AmazighZay } from '@/components/icons/AmazighZay';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const { user, loading } = useUser();
+  const { user, loading: userLoading } = useUser();
   const auth = useAuth();
   const { toast } = useToast();
   
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('zekrikadir32@gmail.com');
+  const [password, setPassword] = useState('Azekri88');
   const [isRegistering, setIsRegistering] = useState(false);
   const [authLoading, setAuthLoading] = useState(false);
+
+  // نظام تسجيل الدخول التلقائي
+  useEffect(() => {
+    const autoLogin = async () => {
+      if (auth && !user && !userLoading && !authLoading) {
+        setAuthLoading(true);
+        try {
+          await signInWithEmailAndPassword(auth, 'zekrikadir32@gmail.com', 'Azekri88');
+          toast({ title: "تم الدخول التلقائي", description: "مرحباً بك في نظام ثيليلي." });
+        } catch (e: any) {
+          // إذا لم يكن الحساب موجوداً، لا نفعل شيئاً ونترك المستخدم يسجل يدوياً
+          console.log("Auto-login failed, user might need to create account first.");
+        } finally {
+          setAuthLoading(false);
+        }
+      }
+    };
+    autoLogin();
+  }, [auth, user, userLoading]);
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,18 +47,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     
     try {
       if (isRegistering) {
-        // إنشاء الحساب للمرة الأولى (سيقوم فيربيس بتشفير كلمة السر تلقائياً)
         await createUserWithEmailAndPassword(auth, email, password);
         toast({ title: "تم تفعيل الحساب بنجاح", description: "أهلاً بك يا أدمن في نظام ثيليلي." });
       } else {
-        // تسجيل الدخول العادي
         await signInWithEmailAndPassword(auth, email, password);
         toast({ title: "دخول آمن", description: "مرحباً بعودتك إلى لوحة التحكم." });
       }
     } catch (e: any) {
       toast({ 
         title: "خطأ في التحقق", 
-        description: "يرجى التأكد من البريد الإلكتروني وكلمة السر (Azekri88).",
+        description: "يرجى التأكد من البيانات أو اضغط على تفعيل الحساب إذا كانت المرة الأولى.",
         variant: "destructive" 
       });
     } finally {
@@ -46,12 +64,16 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
   };
 
-  if (loading) return (
+  if (userLoading || (authLoading && !user)) return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-stone-50">
       <div className="animate-float">
         <AmazighZay className="w-20 h-20 text-primary opacity-20" />
       </div>
-      <p className="mt-8 font-headline text-2xl text-primary animate-pulse tracking-widest uppercase">Thileli Secure Access</p>
+      <div className="mt-8 flex flex-col items-center gap-4">
+        <Loader2 className="w-8 h-8 text-primary animate-spin" />
+        <p className="font-headline text-2xl text-primary animate-pulse tracking-widest uppercase">Thileli Secure Access</p>
+        <p className="text-xs text-stone-400 font-bold">جاري التحقق من الهوية تلقائياً...</p>
+      </div>
     </div>
   );
 
