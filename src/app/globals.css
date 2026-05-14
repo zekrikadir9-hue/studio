@@ -4,15 +4,15 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%; /* خلفية كريمية فاخرة */
+    --background: 40 33% 98%; 
     --foreground: 154 50% 10%;
     --card: 0 0% 100%;
     --card-foreground: 154 50% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 154 50% 10%;
-    --primary: 154 100% 12%; /* أخضر زمردي ملكي */
+    --primary: 154 100% 12%; 
     --primary-foreground: 40 40% 98%;
-    --secondary: 42 75% 45%; /* ذهبي معتق جذاب */
+    --secondary: 42 75% 45%; 
     --secondary-foreground: 154 100% 5%;
     --muted: 40 10% 94%;
     --muted-foreground: 154 10% 40%;
@@ -41,7 +41,7 @@
 }
 
 .glass-card {
-  @apply bg-white/70 backdrop-blur-2xl border border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.05)];
+  @apply bg-white/80 backdrop-blur-2xl border border-white/40 shadow-[0_20px_50px_rgba(0,0,0,0.05)];
 }
 
 .premium-gradient {
@@ -54,16 +54,6 @@
 
 .btn-hover-effect {
   @apply transition-all duration-500 hover:scale-[1.03] active:scale-95 hover:shadow-2xl hover:shadow-primary/20;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
 }
 
 @keyframes marquee {
@@ -83,4 +73,24 @@
 @keyframes marquee-rtl {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 5s ease-in-out infinite;
 }

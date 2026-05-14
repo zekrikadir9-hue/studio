@@ -4,187 +4,217 @@ import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { CONTACT_LINKS, CATEGORIES } from '@/lib/constants';
 import { AmazighZay } from '@/components/icons/AmazighZay';
-import { Sparkles, ShieldCheck, Globe, ArrowLeft, MessageCircle, Instagram, Facebook, Phone } from 'lucide-react';
+import { Sparkles, ShieldCheck, Globe, ArrowLeft, MessageCircle, Truck, Star, BadgeCheck, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 export default function HomePage() {
   const featuredProducts = [
-    { id: '1', name: 'خاتم الفضة المينا الأمازيغي', price: 8500, category: 'خواتم ومجوهرات', image: PlaceHolderImages[1].imageUrl, isNew: true },
-    { id: '2', name: 'نظارات "أطلس" شمسية بإطار خشبي', price: 12000, category: 'نظارات عصرية', image: PlaceHolderImages[4].imageUrl },
-    { id: '3', name: 'قبعة "تيفيناغ" عصرية مطرزة', price: 3500, category: 'قبعات وأغطية رأس', image: PlaceHolderImages[3].imageUrl },
-    { id: '4', name: 'زيت الأرغان العضوي النقي', price: 4500, category: 'العناية بالبشرة الطبيعية', image: PlaceHolderImages[2].imageUrl },
-    { id: '5', name: 'أحمر شفاه "العكر الفاسي" التقليدي', price: 2800, category: 'مكياج وجمال تقليدي', image: PlaceHolderImages[5].imageUrl },
-    { id: '6', name: 'خاتم "توارق" فضة عتيق', price: 9200, category: 'خواتم ومجوهرات', image: PlaceHolderImages[0].imageUrl },
+    { id: '1', name: 'خاتم الفضة المينا الأمازيغي الملكي', price: 18500, oldPrice: 24000, category: 'خواتم ومجوهرات', image: PlaceHolderImages[0].imageUrl, isNew: true, rating: 5 },
+    { id: '2', name: 'نظارات "أطلس" الخشبية - إصدار محدود', price: 12000, oldPrice: 15500, category: 'نظارات عصرية', image: PlaceHolderImages[4].imageUrl, rating: 4.8 },
+    { id: '3', name: 'قبعة "تيفيناغ" المطرزة يدوياً', price: 3500, category: 'قبعات وأغطية رأس', image: PlaceHolderImages[3].imageUrl, rating: 4.5 },
+    { id: '4', name: 'زيت الأرغان العضوي - ذهب الجبال', price: 4500, oldPrice: 6000, category: 'العناية بالبشرة', image: PlaceHolderImages[2].imageUrl, isNew: true, rating: 4.9 },
+    { id: '5', name: 'أحمر شفاه العكر الفاسي الأصيل', price: 2800, category: 'مكياج تقليدي', image: PlaceHolderImages[5].imageUrl, rating: 4.7 },
+    { id: '6', name: 'عقد "توارق" العتيق المرصع', price: 32000, oldPrice: 40000, category: 'مجوهرات تراثية', image: PlaceHolderImages[1].imageUrl, rating: 5 },
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col selection:bg-secondary selection:text-white">
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section */}
-        <section className="relative h-[90vh] flex items-center overflow-hidden">
+        {/* Hero Section - Global Style */}
+        <section className="relative min-h-[85vh] flex items-center overflow-hidden bg-[#0a261f]">
           <div className="absolute inset-0 z-0">
-             <div className="absolute inset-0 bg-gradient-to-l from-primary/95 via-primary/50 to-transparent z-10" />
+             <div className="absolute inset-0 bg-gradient-to-l from-primary/95 via-primary/60 to-transparent z-10" />
              <img 
-               src="https://picsum.photos/seed/amazigh-hero/1920/1080" 
+               src="https://picsum.photos/seed/amazigh-hero-v2/1920/1080" 
                alt="Hero Background" 
-               className="w-full h-full object-cover scale-105"
-               data-ai-hint="amazigh lifestyle"
+               className="w-full h-full object-cover opacity-60 scale-105 animate-pulse"
+               style={{ animationDuration: '10s' }}
+               data-ai-hint="luxury heritage"
              />
           </div>
           
           <div className="container mx-auto px-4 relative z-20">
             <div className="max-w-4xl text-white text-right space-y-8">
-              <div className="inline-flex items-center gap-3 bg-secondary/30 backdrop-blur-xl px-6 py-3 rounded-full border border-secondary/40 animate-in fade-in slide-in-from-top-4 duration-700">
-                <Sparkles className="w-5 h-5 text-secondary animate-pulse" />
-                <span className="text-sm font-bold tracking-widest uppercase">Tagezda n Tussna n Thileli</span>
+              <div className="inline-flex items-center gap-3 bg-secondary/20 backdrop-blur-2xl px-6 py-2 rounded-full border border-secondary/30">
+                <Zap className="w-4 h-4 text-secondary fill-secondary" />
+                <span className="text-xs font-black tracking-widest uppercase">Best Sellers In Algeria</span>
               </div>
-              <h1 className="font-headline text-7xl md:text-[10rem] font-bold leading-[0.9] animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                تراث ثيليلي <br/> <span className="text-secondary italic">المتجدد</span>
+              <h1 className="font-headline text-6xl md:text-9xl font-bold leading-tight">
+                أصالة تتحدث <br/> <span className="text-secondary">بلغة العصر</span>
               </h1>
-              <p className="text-xl md:text-3xl font-light opacity-90 leading-relaxed max-w-2xl ml-auto border-r-2 border-secondary pr-6">
-                أرقى ما أبدعته الأنامل الجزائرية الأمازيغية، قطع فريدة تجمع بين أصالة الجبال وسحر الحداثة.
+              <p className="text-xl md:text-2xl font-light opacity-80 leading-relaxed max-w-2xl ml-auto border-r-4 border-secondary pr-8">
+                نحن لا نبيع منتجات، نحن نبيع قصصاً من عمق الجبال الجزائرية مصاغة بأحدث أساليب الموضة العالمية.
               </p>
-              <div className="flex flex-wrap gap-6 justify-start pt-4">
-                <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white px-12 h-18 text-2xl rounded-full shadow-2xl shadow-secondary/30 btn-hover-effect border-none">
-                  ابدأ الاستكشاف
+              <div className="flex flex-wrap gap-6 justify-start pt-6">
+                <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white px-14 h-20 text-2xl rounded-full shadow-2xl shadow-secondary/40 btn-hover-effect">
+                  تسوق الآن
                 </Button>
-                <Button size="lg" variant="outline" className="text-white border-white/20 hover:bg-white/10 px-12 h-18 text-2xl rounded-full backdrop-blur-md">
-                  رؤيتنا
-                </Button>
+                <div className="flex items-center gap-4 bg-white/5 backdrop-blur-xl p-4 rounded-3xl border border-white/10">
+                   <div className="flex -space-x-3">
+                     {[1,2,3,4].map(i => <div key={i} className="w-10 h-10 rounded-full border-2 border-primary bg-stone-200" />)}
+                   </div>
+                   <div className="text-right">
+                      <p className="text-sm font-bold">+15k Customer</p>
+                      <p className="text-[10px] opacity-60 font-medium">Trusted across 58 Wilayas</p>
+                   </div>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Categories Grid */}
-        <section className="py-32 bg-stone-50 amazigh-pattern-bg">
+        {/* Global Trust Badges */}
+        <section className="bg-white py-12 border-b border-stone-100">
+           <div className="container mx-auto px-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+                 <div className="flex items-center justify-center gap-4 group">
+                    <Truck className="w-10 h-10 text-primary group-hover:scale-110 transition-transform" />
+                    <div className="text-right">
+                       <p className="font-bold text-sm">توصيل سريع</p>
+                       <p className="text-xs text-muted-foreground">لكل ولايات الجزائر</p>
+                    </div>
+                 </div>
+                 <div className="flex items-center justify-center gap-4 group">
+                    <BadgeCheck className="w-10 h-10 text-primary group-hover:scale-110 transition-transform" />
+                    <div className="text-right">
+                       <p className="font-bold text-sm">أصالة مضمونة</p>
+                       <p className="text-xs text-muted-foreground">صناعة يدوية 100%</p>
+                    </div>
+                 </div>
+                 <div className="flex items-center justify-center gap-4 group">
+                    <ShieldCheck className="w-10 h-10 text-primary group-hover:scale-110 transition-transform" />
+                    <div className="text-right">
+                       <p className="font-bold text-sm">دفع آمن</p>
+                       <p className="text-xs text-muted-foreground">عند الاستلام</p>
+                    </div>
+                 </div>
+                 <div className="flex items-center justify-center gap-4 group">
+                    <Star className="w-10 h-10 text-primary group-hover:scale-110 transition-transform" />
+                    <div className="text-right">
+                       <p className="font-bold text-sm">أعلى تقييم</p>
+                       <p className="text-xs text-muted-foreground">رضا زبائننا هدفنا</p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+        </section>
+
+        {/* Flash Deals / Hot Products */}
+        <section className="py-24 bg-stone-50 amazigh-pattern-bg">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-24 space-y-6">
-               <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary">عوالم ثيليلي</h2>
-               <div className="w-32 h-1.5 bg-secondary mx-auto rounded-full" />
-               <p className="text-muted-foreground text-xl max-w-2xl mx-auto">مجموعات مختارة بعناية تعكس عمق الهوية الجزائرية.</p>
+            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+               <div className="text-right">
+                  <div className="inline-flex items-center gap-2 text-secondary font-black text-xs uppercase tracking-[0.3em] mb-4">
+                     <Zap className="w-4 h-4 fill-secondary" /> Hot Deals Right Now
+                  </div>
+                  <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary">عروض ثيليلي الكبرى</h2>
+               </div>
+               <Link href="/shop">
+                 <Button variant="outline" className="rounded-full px-8 h-14 font-bold border-primary text-primary hover:bg-primary hover:text-white transition-all">
+                   عرض كل المنتجات <ArrowLeft className="w-4 h-4 mr-2" />
+                 </Button>
+               </Link>
             </div>
             
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+              {featuredProducts.map((p) => (
+                <ProductCard key={p.id} {...p} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Category Universe - Marketplace Style */}
+        <section className="py-32 bg-white overflow-hidden">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-24 space-y-4">
+               <h2 className="font-headline text-5xl md:text-7xl font-bold text-primary">تسوق حسب الفئة</h2>
+               <p className="text-muted-foreground text-xl font-medium">كل ما تحتاجه لإطلالة أمازيغية متكاملة</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {CATEGORIES.map((cat) => (
-                <Link key={cat.id} href={`/shop?category=${cat.id}`} className="relative h-[450px] rounded-[3.5rem] overflow-hidden group shadow-2xl transition-all duration-700 hover:-translate-y-4">
-                   <div className="absolute inset-0 bg-black/50 group-hover:bg-black/30 transition-all duration-700 z-10" />
-                   <img 
-                      src={cat.imageUrl} 
-                      alt={cat.name} 
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                      data-ai-hint={cat.id}
-                   />
-                   <div className="absolute inset-0 z-20 p-10 flex flex-col justify-end items-center text-center">
-                      <div className="bg-white/10 backdrop-blur-2xl border border-white/20 p-8 rounded-[2.5rem] w-full translate-y-6 group-hover:translate-y-0 transition-transform duration-500 shadow-2xl">
-                         <span className="text-white/70 text-[10px] font-black uppercase tracking-[0.4em] mb-3 block">Premium Selection</span>
-                         <h3 className="text-white text-3xl font-headline font-bold mb-6">{cat.name}</h3>
-                         <div className="overflow-hidden h-0 group-hover:h-14 transition-all duration-500">
-                            <Button variant="secondary" className="rounded-full font-bold px-8 h-12 hover:scale-105 transition-transform">
-                              عرض المجموعة <ArrowLeft className="w-4 h-4 mr-2" />
-                            </Button>
-                         </div>
-                      </div>
+                <Link key={cat.id} href={`/shop?category=${cat.id}`} className="group text-center space-y-4">
+                   <div className="relative aspect-square rounded-[3rem] overflow-hidden shadow-xl border-4 border-transparent group-hover:border-secondary transition-all duration-500">
+                      <img src={cat.imageUrl} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-ai-hint={cat.id} />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-all" />
                    </div>
+                   <h3 className="font-bold text-lg group-hover:text-secondary transition-colors">{cat.name}</h3>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Brand Values */}
-        <section className="py-32 bg-primary text-white relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-             <AmazighZay className="w-[500px] h-[500px] absolute -top-20 -left-20 rotate-12" />
-          </div>
-          <div className="container mx-auto px-4 relative z-10 grid grid-cols-1 md:grid-cols-3 gap-20 text-center">
-            <div className="space-y-8 group">
-              <div className="w-24 h-24 bg-secondary/20 backdrop-blur-xl border border-secondary/30 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl group-hover:rotate-12 transition-transform duration-500">
-                <Globe className="w-12 h-12 text-secondary" />
+        {/* Brand Banner - Ultra Premium */}
+        <section className="container mx-auto px-4 py-32">
+           <div className="premium-gradient rounded-[4rem] p-12 md:p-24 relative overflow-hidden group shadow-[0_50px_100px_rgba(6,78,59,0.3)]">
+              <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none shimmer" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                 <div className="text-white text-right space-y-8">
+                    <h2 className="font-headline text-5xl md:text-8xl font-bold leading-tight">انضم إلى مجتمع <br/> <span className="text-secondary italic">ثيليلي</span></h2>
+                    <p className="text-white/70 text-xl md:text-2xl font-light">اشترك في قائمتنا البريدية للحصول على عروض حصرية وتنبيهات بأحدث المجموعات التراثية.</p>
+                    <div className="flex gap-4">
+                       <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white rounded-full px-12 h-18 text-xl font-bold btn-hover-effect">اشترك الآن</Button>
+                    </div>
+                 </div>
+                 <div className="relative flex justify-center items-center">
+                    <div className="w-64 h-64 md:w-[400px] md:h-[400px] bg-secondary/10 rounded-full flex items-center justify-center animate-float">
+                       <AmazighZay className="w-32 h-32 md:w-64 md:h-64 text-secondary/40" />
+                    </div>
+                 </div>
               </div>
-              <h3 className="font-headline text-4xl font-bold">توصيل لـ 58 ولاية</h3>
-              <p className="text-white/60 text-xl leading-relaxed">شبكة توزيع احترافية تغطي كل شبر من الجزائر، بضمان وصول آمن وسريع.</p>
-            </div>
-            <div className="space-y-8 group">
-              <div className="w-24 h-24 bg-secondary/20 backdrop-blur-xl border border-secondary/30 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl group-hover:rotate-12 transition-transform duration-500">
-                <Sparkles className="w-12 h-12 text-secondary" />
-              </div>
-              <h3 className="font-headline text-4xl font-bold">منتجات طبيعية</h3>
-              <p className="text-white/60 text-xl leading-relaxed">كنوز الطبيعة الجزائرية، من زيوت أطلس النادرة إلى أسرار الجمال التقليدي.</p>
-            </div>
-            <div className="space-y-8 group">
-              <div className="w-24 h-24 bg-secondary/20 backdrop-blur-xl border border-secondary/30 rounded-[2.5rem] flex items-center justify-center mx-auto mb-10 shadow-2xl group-hover:rotate-12 transition-transform duration-500">
-                <ShieldCheck className="w-12 h-12 text-secondary" />
-              </div>
-              <h3 className="font-headline text-4xl font-bold">أصالة معتمدة</h3>
-              <p className="text-white/60 text-xl leading-relaxed">كل قطعة هي شهادة فخر صاغها حرفيون جزائريون يحافظون على إرث الأجداد.</p>
-            </div>
-          </div>
+           </div>
         </section>
       </main>
 
-      <footer className="bg-stone-100 border-t border-stone-200 pt-32 pb-16 text-right">
+      {/* Global Style Footer */}
+      <footer className="bg-stone-50 border-t border-stone-200 pt-32 pb-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-20 mb-24">
-            <div className="md:col-span-2 space-y-10">
-              <div className="flex items-center gap-4">
-                 <div className="p-3 bg-primary rounded-[1.2rem] shadow-xl">
+            <div className="md:col-span-2 space-y-10 text-right">
+              <div className="flex items-center justify-end gap-4">
+                 <span className="font-headline text-5xl font-bold text-primary tracking-tighter">THILELI</span>
+                 <div className="p-3 bg-primary rounded-2xl shadow-xl">
                    <AmazighZay className="w-8 h-8 text-secondary" />
                  </div>
-                <span className="font-headline text-5xl font-bold text-primary tracking-tighter">THILELI</span>
               </div>
-              <p className="text-muted-foreground text-xl max-w-lg leading-relaxed">
-                رسالتنا هي إحياء التراث الأمازيغي الجزائري وتقديمه للعالم بلمسة فنية عصرية تليق بمقامكم.
+              <p className="text-muted-foreground text-xl max-w-lg leading-relaxed mr-auto">
+                وجهتكم الأولى لأرقى الحرف اليدوية والمنتجات التراثية الجزائرية المصاغة بلمسات عصرية عالمية.
               </p>
-              <div className="flex gap-6 justify-start">
-                {[
-                  { icon: Facebook, link: CONTACT_LINKS.facebook },
-                  { icon: Instagram, link: CONTACT_LINKS.instagram },
-                  { icon: MessageCircle, link: CONTACT_LINKS.whatsapp },
-                ].map((social, i) => (
-                  <Link key={i} href={social.link} className="w-14 h-14 bg-white rounded-2xl text-primary flex items-center justify-center hover:bg-secondary hover:text-white transition-all shadow-lg hover:-translate-y-2">
-                    <social.icon className="w-7 h-7" />
-                  </Link>
-                ))}
+              <div className="flex gap-4 justify-end">
+                {[1,2,3,4,5].map(i => <div key={i} className="w-12 h-12 bg-white rounded-xl border border-stone-200" />)}
               </div>
             </div>
-            <div>
-              <h4 className="font-bold text-primary text-2xl mb-10">روابط سريعة</h4>
-              <ul className="space-y-5 text-muted-foreground text-lg">
-                <li><Link href="/shop" className="hover:text-secondary transition-colors">جميع المنتجات</Link></li>
-                <li><Link href="/heritage" className="hover:text-secondary transition-colors">قصة ثيليلي</Link></li>
-                <li><Link href="/track" className="hover:text-secondary transition-colors">تتبع الطلبية</Link></li>
-                <li><Link href="/contact" className="hover:text-secondary transition-colors">تواصل معنا</Link></li>
+            <div className="text-right">
+              <h4 className="font-black uppercase tracking-widest text-stone-400 text-xs mb-10">Links</h4>
+              <ul className="space-y-4 text-primary font-bold">
+                <li><Link href="/shop" className="hover:text-secondary">Explore All</Link></li>
+                <li><Link href="/heritage" className="hover:text-secondary">The Story</Link></li>
+                <li><Link href="/shipping" className="hover:text-secondary">Shipping Info</Link></li>
+                <li><Link href="/contact" className="hover:text-secondary">Support</Link></li>
               </ul>
             </div>
-            <div>
-              <h4 className="font-bold text-primary text-2xl mb-10">تواصل مباشر</h4>
-              <ul className="space-y-8 text-muted-foreground text-lg">
-                <li><Link href="tel:+213000000000" className="flex items-center gap-4 justify-end group font-bold text-primary"><span className="group-hover:text-secondary transition-colors">+213 00 00 00 00</span> <Phone className="w-6 h-6 text-secondary" /></Link></li>
-                <li><Link href="mailto:hello@thileli.dz" className="hover:text-secondary transition-colors border-b border-stone-200 pb-2">hello@thileli.dz</Link></li>
-                <li className="text-sm opacity-70 leading-relaxed font-bold">تيزي وزو، الجزائر<br/>قلب منطقة القبائل النابض</li>
+            <div className="text-right">
+              <h4 className="font-black uppercase tracking-widest text-stone-400 text-xs mb-10">Contact</h4>
+              <ul className="space-y-6">
+                <li className="font-bold text-primary">+213 00 00 00 00</li>
+                <li className="text-muted-foreground">Tizi Ouzou, Algeria</li>
+                <li><Button className="rounded-full bg-green-500 hover:bg-green-600 text-white gap-2 font-bold"><MessageCircle className="w-4 h-4" /> WhatsApp</Button></li>
               </ul>
             </div>
           </div>
-          <div className="pt-12 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-6 text-sm text-stone-400 font-bold uppercase tracking-widest">
-            <p>© {new Date().getFullYear()} THILELI HERITAGE. ALL RIGHTS RESERVED.</p>
+          <div className="pt-12 border-t border-stone-200 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-stone-400 font-black uppercase tracking-[0.3em]">
+            <p>© {new Date().getFullYear()} THILELI GLOBAL MARKETPLACE.</p>
             <div className="flex gap-10">
-               <span className="hover:text-primary cursor-pointer transition-colors">Privacy</span>
-               <span className="hover:text-primary cursor-pointer transition-colors">Terms</span>
+               <span>Privacy Policy</span>
+               <span>Terms of Service</span>
             </div>
           </div>
         </div>
       </footer>
-
-      <Link 
-        href={CONTACT_LINKS.whatsapp}
-        className="fixed bottom-12 left-12 z-50 p-6 bg-green-500 text-white rounded-[2.5rem] shadow-2xl hover:scale-110 transition-all duration-500 flex items-center gap-4 group border-4 border-white"
-      >
-        <MessageCircle className="w-8 h-8" />
-        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-bold text-lg">مساعدة فورية</span>
-      </Link>
     </div>
   );
 }
