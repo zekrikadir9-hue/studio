@@ -1,0 +1,48 @@
+
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "A store product with heritage details",
+      "type": "object",
+      "properties": {
+        "name_ar": { "type": "string" },
+        "name_fr": { "type": "string" },
+        "description_ar": { "type": "string" },
+        "description_fr": { "type": "string" },
+        "price": { "type": "number" },
+        "category": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "discountPrice": { "type": "number" },
+        "isNew": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name_ar", "name_fr", "price", "category", "imageUrl"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Product category",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name_ar": { "type": "string" },
+        "name_fr": { "type": "string" },
+        "icon": { "type": "string" }
+      },
+      "required": ["id", "name_ar", "name_fr"]
+    }
+  },
+  "auth": {
+    "providers": ["password"]
+  },
+  "firestore": {
+    "/products/{productId}": {
+      "schema": "#/entities/Product",
+      "description": "Collection of products"
+    },
+    "/categories/{categoryId}": {
+      "schema": "#/entities/Category",
+      "description": "Collection of store categories"
+    }
+  }
+}

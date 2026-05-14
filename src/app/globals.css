@@ -1,50 +1,30 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 40 40% 98%; /* Antique Cream approx */
+    --background: 35 30% 98%; /* Warm Antique Cream */
     --foreground: 154 50% 10%;
     --card: 0 0% 100%;
     --card-foreground: 154 50% 10%;
     --popover: 0 0% 100%;
     --popover-foreground: 154 50% 10%;
-    --primary: 154 100% 19%; /* Royal Forest Green #006233 */
+    --primary: 154 100% 15%; /* Deep Royal Forest Green */
     --primary-foreground: 40 40% 98%;
-    --secondary: 46 65% 53%; /* Burnished Gold #D4AF37 approx */
-    --secondary-foreground: 154 100% 10%;
+    --secondary: 42 70% 50%; /* Rich Burnished Gold */
+    --secondary-foreground: 154 100% 5%;
     --muted: 40 10% 92%;
     --muted-foreground: 154 10% 35%;
-    --accent: 46 65% 53%;
+    --accent: 42 70% 50%;
     --accent-foreground: 40 40% 98%;
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     --border: 40 10% 85%;
     --input: 40 10% 85%;
-    --ring: 154 100% 19%;
-    --radius: 0.75rem;
-  }
-  .dark {
-    --background: 154 50% 5%;
-    --foreground: 40 40% 98%;
-    --card: 154 50% 8%;
-    --card-foreground: 40 40% 98%;
-    --popover: 154 50% 8%;
-    --popover-foreground: 40 40% 98%;
-    --primary: 46 65% 53%;
-    --primary-foreground: 154 50% 5%;
-    --secondary: 154 100% 19%;
-    --secondary-foreground: 40 40% 98%;
-    --muted: 154 20% 15%;
-    --muted-foreground: 154 10% 70%;
-    --accent: 46 65% 53%;
-    --accent-foreground: 154 50% 5%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 154 20% 20%;
-    --input: 154 20% 20%;
-    --ring: 46 65% 53%;
+    --ring: 154 100% 15%;
+    --radius: 1rem;
   }
 }
 
@@ -53,6 +33,29 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
   }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+.font-headline {
+  font-family: 'Playfair Display', serif;
+}
+
+.glass-card {
+  @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
+}
+
+.btn-hover-effect {
+  @apply transition-all duration-300 hover:scale-105 active:scale-95;
 }
