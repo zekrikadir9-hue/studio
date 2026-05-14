@@ -2,18 +2,18 @@ import { Navbar } from '@/components/layout/Navbar';
 import { ProductCard } from '@/components/shop/ProductCard';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { CONTACT_LINKS } from '@/lib/constants';
-import { Phone, Send, MessageCircle, Instagram, Facebook } from 'lucide-react';
+import { CONTACT_LINKS, CATEGORIES } from '@/lib/constants';
+import { Phone, Send, MessageCircle, Instagram, Facebook, Sparkles, ShieldCheck, Globe } from 'lucide-react';
 import Link from 'next/link';
 
 export default function HomePage() {
   const featuredProducts = [
-    { id: '1', name: 'Kabyle Enamel Necklace', price: 18500, category: 'Jewelry', image: PlaceHolderImages[1].imageUrl, isNew: true },
-    { id: '2', name: 'Pure Wool Burnous (White)', price: 32000, category: 'Clothing', image: PlaceHolderImages[3].imageUrl },
-    { id: '3', name: 'Hand-woven Atlas Rug', price: 55000, category: 'Home', image: PlaceHolderImages[0].imageUrl },
-    { id: '4', name: 'Kabyle Enameled Pottery', price: 4500, category: 'Pottery', image: PlaceHolderImages[2].imageUrl },
-    { id: '5', name: 'Berber Silver Earrings', price: 8200, category: 'Jewelry', image: PlaceHolderImages[5].imageUrl },
-    { id: '6', name: 'Traditional Kabyle Dress', price: 14500, category: 'Clothing', image: PlaceHolderImages[4].imageUrl },
+    { id: '1', name: 'خاتم الفضة المينا الأمازيغي', price: 8500, category: 'خواتم ومجوهرات', image: PlaceHolderImages[1].imageUrl, isNew: true },
+    { id: '2', name: 'نظارات "أطلس" شمسية بإطار خشبي', price: 12000, category: 'نظارات عصرية', image: PlaceHolderImages[4].imageUrl },
+    { id: '3', name: 'قبعة "تيفيناغ" عصرية مطرزة', price: 3500, category: 'قبعات وأغطية رأس', image: PlaceHolderImages[3].imageUrl },
+    { id: '4', name: 'زيت الأرغان العضوي النقي', price: 4500, category: 'العناية بالبشرة الطبيعية', image: PlaceHolderImages[2].imageUrl },
+    { id: '5', name: 'أحمر شفاه "العكر الفاسي" التقليدي', price: 2800, category: 'مكياج وجمال تقليدي', image: PlaceHolderImages[5].imageUrl },
+    { id: '6', name: 'خاتم "توارق" فضة عتيق', price: 9200, category: 'خواتم ومجوهرات', image: PlaceHolderImages[0].imageUrl },
   ];
 
   return (
@@ -29,40 +29,57 @@ export default function HomePage() {
                src="https://picsum.photos/seed/amazigh-hero/1920/1080" 
                alt="Hero Background" 
                className="w-full h-full object-cover"
-               data-ai-hint="amazigh craft"
+               data-ai-hint="amazigh lifestyle"
              />
           </div>
           
           <div className="container mx-auto px-4 relative z-20">
-            <div className="max-w-2xl text-white">
+            <div className="max-w-2xl text-white text-right">
               <h1 className="font-headline text-6xl md:text-8xl font-bold mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-                THILELI Heritage
+                تراث ثيليلي المعاصر
               </h1>
               <p className="text-xl md:text-2xl font-light mb-10 opacity-90 leading-relaxed">
-                Discover the timeless beauty of Algerian Amazigh craftsmanship. Handpicked, authentic, and delivered to your doorstep.
+                اكتشف جمال الحرف الأمازيغية الجزائرية بلمسة عصرية. مختارات من النظارات، القبعات، والمجوهرات الفاخرة.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 justify-start">
                 <Button size="lg" className="bg-secondary hover:bg-secondary/90 text-white px-8 h-14 text-lg rounded-full">
-                  Shop Collection
+                  تسوق التشكيلة
                 </Button>
                 <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-primary px-8 h-14 text-lg rounded-full">
-                  Our Story
+                  قصتنا
                 </Button>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Categories Grid */}
+        <section className="py-16 bg-stone-50">
+          <div className="container mx-auto px-4">
+            <h2 className="font-headline text-3xl font-bold text-center mb-12 text-primary">تصفح حسب الفئة</h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {CATEGORIES.map((cat) => (
+                <Link key={cat.id} href={`/shop?category=${cat.id}`} className="bg-white p-6 rounded-2xl shadow-sm border border-stone-100 text-center hover:border-secondary transition-all group">
+                   <div className="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/10 transition-colors">
+                      <Sparkles className="w-6 h-6 text-primary group-hover:text-secondary" />
+                   </div>
+                   <span className="font-bold text-sm text-primary">{cat.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Featured Products */}
-        <section className="py-24 bg-background">
+        <section className="py-24 bg-background text-right">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
               <div className="max-w-xl">
-                <h2 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">The Prestige Edit</h2>
-                <p className="text-muted-foreground text-lg">Curated selections of the finest Berber craftsmanship from across Algeria.</p>
+                <h2 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">أرقى المختارات</h2>
+                <p className="text-muted-foreground text-lg">مزيج بين الحداثة والأصالة في كل قطعة نختارها لك.</p>
               </div>
               <Button variant="link" className="text-secondary font-bold text-lg group">
-                View All Collection <span className="inline-block transition-transform group-hover:translate-x-1 ml-2">→</span>
+                عرض جميع المنتجات <span className="inline-block transition-transform group-hover:-translate-x-1 mr-2">←</span>
               </Button>
             </div>
 
@@ -79,30 +96,30 @@ export default function HomePage() {
           <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             <div className="space-y-4">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                <Phone className="w-8 h-8" />
+                <Globe className="w-8 h-8" />
               </div>
-              <h3 className="font-headline text-2xl font-bold">58 Wilayas Delivery</h3>
-              <p className="opacity-80">Fast and secure shipping across all regions of Algeria, from Algiers to Tamanrasset.</p>
+              <h3 className="font-headline text-2xl font-bold">توصيل لـ 58 ولاية</h3>
+              <p className="opacity-80">شحن سريع وآمن إلى جميع ربوع الجزائر، من العاصمة إلى تمنراست.</p>
             </div>
             <div className="space-y-4">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                <MessageCircle className="w-8 h-8" />
+                <Sparkles className="w-8 h-8" />
               </div>
-              <h3 className="font-headline text-2xl font-bold">Artisan Direct</h3>
-              <p className="opacity-80">We work directly with local craftsmen to ensure authenticity and fair trade practices.</p>
+              <h3 className="font-headline text-2xl font-bold">منتجات طبيعية 100%</h3>
+              <p className="opacity-80">مكياج وعناية بالبشرة مستوحاة من أسرار الجمال الجزائري القديم.</p>
             </div>
             <div className="space-y-4">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6">
-                <Send className="w-8 h-8" />
+                <ShieldCheck className="w-8 h-8" />
               </div>
-              <h3 className="font-headline text-2xl font-bold">Secure Payment</h3>
-              <p className="opacity-80">Pay on delivery or through secure banking options for a worry-free shopping experience.</p>
+              <h3 className="font-headline text-2xl font-bold">أصالة مضمونة</h3>
+              <p className="opacity-80">كل قطعة مجوهرات أو إكسسوار تحمل بصمة صانع جزائري فخور بعمله.</p>
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="bg-stone-100 border-t border-stone-200 py-16">
+      <footer className="bg-stone-100 border-t border-stone-200 py-16 text-right">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
             <div className="md:col-span-2 space-y-6">
@@ -110,9 +127,9 @@ export default function HomePage() {
                 <span className="font-headline text-3xl font-bold text-primary">THILELI</span>
               </div>
               <p className="text-muted-foreground max-w-sm">
-                Celebrating and preserving the rich Amazigh heritage of Algeria through sustainable craft and artisanal excellence.
+                نحتفي بالتراث الأمازيغي الجزائري وننقله للعالمية عبر منتجات عصرية تناسب أسلوب حياتكم اليومي.
               </p>
-              <div className="flex gap-4">
+              <div className="flex gap-4 justify-start">
                 <Link href={CONTACT_LINKS.facebook} className="p-3 bg-white rounded-full text-primary hover:bg-secondary hover:text-white transition-all">
                   <Facebook className="w-5 h-5" />
                 </Link>
@@ -125,25 +142,25 @@ export default function HomePage() {
               </div>
             </div>
             <div>
-              <h4 className="font-bold text-primary mb-6">Quick Links</h4>
+              <h4 className="font-bold text-primary mb-6">روابط سريعة</h4>
               <ul className="space-y-4 text-muted-foreground">
-                <li><Link href="/shop" className="hover:text-secondary">All Products</Link></li>
-                <li><Link href="/track" className="hover:text-secondary">Track Order</Link></li>
-                <li><Link href="/wilayas" className="hover:text-secondary">Shipping Areas</Link></li>
-                <li><Link href="/returns" className="hover:text-secondary">Returns Policy</Link></li>
+                <li><Link href="/shop" className="hover:text-secondary">جميع المنتجات</Link></li>
+                <li><Link href="/track" className="hover:text-secondary">تتبع الطلب</Link></li>
+                <li><Link href="/wilayas" className="hover:text-secondary">مناطق الشحن</Link></li>
+                <li><Link href="/returns" className="hover:text-secondary">سياسة الإرجاع</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-primary mb-6">Customer Support</h4>
+              <h4 className="font-bold text-primary mb-6">دعم العملاء</h4>
               <ul className="space-y-4 text-muted-foreground">
-                <li><Link href="tel:+213000000000" className="flex items-center gap-2"><Phone className="w-4 h-4" /> +213 00 00 00 00</Link></li>
+                <li><Link href="tel:+213000000000" className="flex items-center gap-2 justify-end"><Phone className="w-4 h-4 ml-2" /> +213 00 00 00 00</Link></li>
                 <li><Link href="mailto:support@thileli.dz" className="hover:text-secondary">support@thileli.dz</Link></li>
-                <li>Tizi Ouzou, Algeria</li>
+                <li>تيزي وزو، الجزائر</li>
               </ul>
             </div>
           </div>
           <div className="pt-8 border-t border-stone-200 text-center text-sm text-muted-foreground">
-            © {new Date().getFullYear()} THILELI Heritage. All rights reserved.
+            © {new Date().getFullYear()} THILELI Heritage. جميع الحقوق محفوظة.
           </div>
         </div>
       </footer>
@@ -151,10 +168,10 @@ export default function HomePage() {
       {/* Floating Support Button */}
       <Link 
         href={CONTACT_LINKS.whatsapp}
-        className="fixed bottom-8 right-8 z-50 p-4 bg-green-500 text-white rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group"
+        className="fixed bottom-8 left-8 z-50 p-4 bg-green-500 text-white rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group"
       >
         <MessageCircle className="w-6 h-6" />
-        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-medium">Chat with us</span>
+        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap font-medium">تحدث معنا</span>
       </Link>
     </div>
   );

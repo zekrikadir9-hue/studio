@@ -8,10 +8,12 @@ export const WILAYAS = [
 ];
 
 export const CATEGORIES = [
-  { id: 'rugs', name: 'Zarabi (Rugs)', icon: 'Home' },
-  { id: 'jewelry', name: 'Jewelry (Kabyle)', icon: 'Gem' },
-  { id: 'clothing', name: 'Traditional Clothing', icon: 'Shirt' },
-  { id: 'pottery', name: 'Pottery & Ceramics', icon: 'Paintbrush' }
+  { id: 'rings-jewelry', name: 'خواتم ومجوهرات', icon: 'Gem' },
+  { id: 'headwear', name: 'قبعات وأغطية رأس', icon: 'ShoppingBag' },
+  { id: 'eyewear', name: 'نظارات عصرية', icon: 'Eye' },
+  { id: 'makeup', name: 'مكياج وجمال تقليدي', icon: 'Sparkles' },
+  { id: 'skincare', name: 'العناية بالبشرة الطبيعية', icon: 'Droplets' },
+  { id: 'fragrances', name: 'عطور وبخور', icon: 'Wind' }
 ];
 
 export const CONTACT_LINKS = {
