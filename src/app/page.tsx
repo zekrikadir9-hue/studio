@@ -19,11 +19,11 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col selection:bg-secondary selection:text-white overflow-x-hidden">
+    <div className="min-h-screen flex flex-col selection:bg-secondary selection:text-white overflow-x-hidden bg-[#FDFBF7]">
       <Navbar />
       
       <main className="flex-grow">
-        {/* Hero Section */}
+        {/* Hero Section - Cinematic & International Style */}
         <section className="relative min-h-[85vh] md:min-h-[95vh] flex items-center overflow-hidden bg-[#061a15]">
           <div className="absolute inset-0 z-0">
              <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-primary/95 via-primary/30 to-transparent z-10" />
@@ -74,26 +74,23 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Global Trust Bar */}
+        {/* Global Trust Bar - Mobile Optimized */}
         <div className="bg-white py-10 md:py-20 border-b border-stone-100 relative overflow-hidden">
            <div className="container mx-auto px-4">
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-16">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-16">
                  {[
                    { icon: Truck, title: "شحن لـ 58 ولاية", sub: "Fast & Secure Logistics", color: "text-blue-600" },
                    { icon: Award, title: "جودة أصلية 100%", sub: "Authentic Masterpieces", color: "text-amber-600" },
                    { icon: ShieldCheck, title: "دفع عند الاستلام", sub: "Buyer Protection Guard", color: "text-emerald-600" },
                    { icon: Clock, title: "دعم 24/7", sub: "Concierge Service", color: "text-purple-600" }
                  ].map((item, i) => (
-                   <div key={i} className="flex flex-col md:flex-row items-center md:items-center text-center md:text-right gap-4 md:gap-6 group hover:translate-y-[-5px] transition-transform duration-500">
-                      <div className={`w-12 h-12 md:w-20 md:h-20 bg-stone-50 rounded-xl md:rounded-[2rem] flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-lg md:shadow-xl ${item.color}`}>
+                   <div key={i} className="flex flex-col md:flex-row items-center md:items-center text-center md:text-right gap-3 md:gap-6 group transition-all duration-500 hover:translate-y-[-5px]">
+                      <div className={`w-12 h-12 md:w-20 md:h-20 bg-stone-50 rounded-2xl md:rounded-[2rem] flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all shadow-lg md:shadow-xl ${item.color}`}>
                         <item.icon className="w-6 h-6 md:w-10 md:h-10" />
                       </div>
-                      <div className="text-right hidden md:block">
-                         <p className="font-black text-xs md:text-sm uppercase tracking-widest text-primary">{item.title}</p>
-                         <p className="text-[8px] md:text-[10px] text-muted-foreground font-bold">{item.sub}</p>
-                      </div>
-                      <div className="md:hidden">
-                         <p className="font-bold text-[10px] text-primary">{item.title}</p>
+                      <div className="text-right">
+                         <p className="font-bold text-[10px] md:text-sm text-primary uppercase tracking-widest">{item.title}</p>
+                         <p className="hidden md:block text-[10px] text-muted-foreground font-bold">{item.sub}</p>
                       </div>
                    </div>
                  ))}
@@ -101,11 +98,11 @@ export default function HomePage() {
            </div>
         </div>
 
-        {/* Featured Products */}
+        {/* Featured Products - High Density Global Style */}
         <section className="py-16 md:py-32 bg-stone-50 amazigh-pattern-bg">
           <div className="container mx-auto px-4">
-            <div className="flex flex-col justify-between items-center md:items-end mb-12 md:mb-24 gap-6 md:gap-10">
-               <div className="text-center md:text-right space-y-2 md:space-y-4">
+            <div className="flex flex-col justify-between items-center md:items-end mb-12 md:mb-24 gap-6 md:gap-10 text-center md:text-right">
+               <div className="space-y-2 md:space-y-4">
                   <div className="inline-flex items-center gap-2 text-secondary font-black text-[10px] md:text-sm uppercase tracking-[0.3em] md:tracking-[0.5em]">
                      <TrendingUp className="w-4 h-4 md:w-6 md:h-6 animate-pulse" /> Trending Now
                   </div>
@@ -119,7 +116,7 @@ export default function HomePage() {
                </Link>
             </div>
             
-            <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-12">
+            <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-12">
               {featuredProducts.map((p) => (
                 <ProductCard key={p.id} {...p} />
               ))}
@@ -139,23 +136,22 @@ export default function HomePage() {
                <p className="text-muted-foreground text-sm md:text-3xl font-light leading-relaxed">اكتشف التنوع المذهل في مجموعاتنا، من المجوهرات العتيقة إلى العناية بالبشرة الطبيعية.</p>
             </div>
             
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-12">
               {CATEGORIES.map((cat) => (
                 <Link key={cat.id} href={`/shop?category=${cat.id}`} className="group text-center space-y-4 md:space-y-8 block">
-                   <div className="relative aspect-[3/4] rounded-[2rem] md:rounded-[5rem] overflow-hidden shadow-xl border-4 md:border-8 border-transparent group-hover:border-secondary transition-all duration-700 hover:scale-[1.05]">
+                   <div className="relative aspect-[3/4] rounded-[2rem] md:rounded-[5rem] overflow-hidden shadow-xl border-2 md:border-8 border-transparent group-hover:border-secondary transition-all duration-700 hover:scale-[1.05]">
                       <img src={cat.imageUrl} alt={cat.name} className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-1000" />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent group-hover:opacity-40 transition-opacity" />
-                      <div className="absolute bottom-4 md:bottom-8 left-0 right-0 text-white font-headline text-sm md:text-2xl font-bold px-4 md:px-6">{cat.name}</div>
+                      <div className="absolute bottom-4 md:bottom-8 left-0 right-0 text-white font-headline text-sm md:text-2xl font-bold px-2 md:px-6">{cat.name}</div>
                    </div>
-                   <h3 className="font-black text-[8px] md:text-xs uppercase tracking-[0.2em] md:tracking-[0.4em] text-primary/40 group-hover:text-secondary transition-colors">{cat.id.replace('-', ' ')}</h3>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Premium Invitation */}
-        <section className="container mx-auto px-4 py-24 md:py-48">
+        {/* Premium VIP Invitation */}
+        <section className="container mx-auto px-4 py-16 md:py-48">
            <div className="premium-gradient rounded-[3rem] md:rounded-[6rem] p-8 md:p-36 relative overflow-hidden group shadow-2xl">
               <div className="absolute inset-0 opacity-10 pointer-events-none amazigh-pattern-bg" />
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-32 items-center relative z-10">
@@ -181,10 +177,10 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* Global Footer */}
+      {/* Footer - Global Marketplace Style */}
       <footer className="bg-stone-950 text-white pt-24 md:pt-48 pb-10 md:pb-20 border-t-[8px] md:border-t-[15px] border-secondary">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 md:gap-32 mb-20 md:mb-40 text-center md:text-right">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-32 mb-20 md:mb-40 text-center md:text-right">
             <div className="lg:col-span-2 space-y-8 md:space-y-16">
               <div className="flex items-center justify-center md:justify-end gap-4 md:gap-6">
                  <span className="font-headline text-3xl md:text-7xl font-bold text-white tracking-tighter">THILELI</span>
@@ -195,13 +191,6 @@ export default function HomePage() {
               <p className="text-stone-400 text-lg md:text-3xl max-w-2xl leading-relaxed md:mr-auto font-light">
                 متجر "ثيليلي" هو سفير التراث الجزائري الأمازيغي في العالم الرقمي، نجمع بين عراقة الماضي وأدوات المستقبل.
               </p>
-              <div className="flex gap-4 md:gap-8 justify-center md:justify-end">
-                {['facebook', 'instagram', 'whatsapp', 'tiktok'].map(social => (
-                  <Link key={social} href="#" className="w-12 h-12 md:w-16 md:h-16 bg-white/5 rounded-xl md:rounded-[1.5rem] border border-white/10 flex items-center justify-center hover:bg-secondary transition-all">
-                    <Globe className="w-6 h-6 md:w-8 md:h-8" />
-                  </Link>
-                ))}
-              </div>
             </div>
             
             <div className="space-y-8 md:space-y-12">
@@ -209,24 +198,18 @@ export default function HomePage() {
               <ul className="space-y-4 md:space-y-8 text-lg md:text-2xl font-medium text-stone-300">
                 <li><Link href="/shop" className="hover:text-secondary">The Collection</Link></li>
                 <li><Link href="/heritage" className="hover:text-secondary">Our Craft Story</Link></li>
-                <li><Link href="/shipping" className="hover:text-secondary">Global Logistics</Link></li>
               </ul>
             </div>
             
             <div className="space-y-8 md:space-y-12">
               <h4 className="font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-secondary text-[10px] md:text-sm">Concierge</h4>
-              <ul className="space-y-6 md:space-y-10">
-                <li className="font-bold text-2xl md:text-4xl text-white">+213 00 00 00 00</li>
-                <li>
-                   <Button className="w-full rounded-full bg-secondary hover:bg-secondary/90 text-white gap-2 md:gap-4 font-bold h-14 md:h-20 text-sm md:text-xl">
-                     <MessageCircle className="w-6 h-6 md:w-8 md:h-8" /> Direct WhatsApp
-                   </Button>
-                </li>
-              </ul>
+              <Button className="w-full rounded-full bg-secondary hover:bg-secondary/90 text-white gap-2 md:gap-4 font-bold h-14 md:h-20 text-sm md:text-xl">
+                <MessageCircle className="w-6 h-6 md:w-8 md:h-8" /> Direct WhatsApp
+              </Button>
             </div>
           </div>
           
-          <div className="pt-10 border-t border-white/5 text-center text-[6px] md:text-[10px] text-stone-600 font-black uppercase tracking-[0.2em] md:tracking-[0.5em]">
+          <div className="pt-10 border-t border-white/5 text-center text-[8px] md:text-[10px] text-stone-600 font-black uppercase tracking-[0.2em] md:tracking-[0.5em]">
             <p>© {new Date().getFullYear()} THILELI GLOBAL LUXURY MARKETPLACE. ALL RIGHTS RESERVED.</p>
           </div>
         </div>
